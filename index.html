@@ -61,15 +61,20 @@
 </head>
 <body>
 
+    <!-- Initial question -->
     <div class="question" id="question">Will you be my valentuzz?</div>
+
+    <!-- Options -->
     <div class="options">
         <button class="btn" onclick="nextQuestion('yes')">Yes</button>
         <button class="btn" onclick="nextQuestion('no')">No</button>
     </div>
 
+    <!-- GIF container -->
     <div id="gif-container"></div>
 
     <script>
+        // Questions in sequence
         const questions = [
             "Will you be my valentuzz?",
             "Will you be the ts to my pmo?",
@@ -77,6 +82,15 @@
             "Yayyyyy meoww!"
         ];
 
+        // GIFs corresponding to each question
+        const gifs = [
+            "audreyissocute.gif",  // Q1
+            "catdancing.gif",      // Q2
+            "cathugging.gif",      // Q3
+            "audreyorbeezgun.gif"  // Placeholder for final
+        ];
+
+        // Responses for "No" button
         const noResponses = [
             "No",
             "Are you sure?",
@@ -89,44 +103,46 @@
         let currentQuestion = 0;
         let noIndex = 0;
 
+        // Show the first GIF when the page loads
+        window.onload = function() {
+            document.getElementById('gif-container').innerHTML = `<img src="${gifs[currentQuestion]}" alt="Happy">`;
+        };
+
+        // Function to handle button clicks
         function nextQuestion(response) {
             const gifContainer = document.getElementById('gif-container');
+
             if (response === 'yes') {
-                gifContainer.innerHTML = `<img src="${gifs[currentQuestion]}" alt="Happy">`;
                 currentQuestion++;
                 noIndex = 0;
+                if (currentQuestion < questions.length) {
+                    document.getElementById('question').innerText = questions[currentQuestion];
+                    gifContainer.innerHTML = `<img src="${gifs[currentQuestion]}" alt="Happy">`;
+                } else {
+                    // Final slide with both GIFs on the sides
+                    document.getElementById('question').innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                            <img src="audreyorbeezgun.gif" alt="Happy">
+                            <div style="font-size: 2em; color: white;">Yayyyyy meoww!</div>
+                            <img src="catkissing.gif" alt="Happy">
+                        </div>`;
+                    document.querySelector('.options').style.display = 'none';
+                }
+
             } else {
+                // Handle "No" responses
                 if (noIndex < noResponses.length) {
                     document.getElementById('question').innerText = noResponses[noIndex];
-                    gifContainer.innerHTML = '<img src="catblowingup.gif" alt="No Response">';
+                    gifContainer.innerHTML = `<img src="catblowingup.gif" alt="No Response">`;
                     noIndex++;
                 } else {
-                    gifContainer.innerHTML = '<img src="catblowingup.gif" alt="Sad">';
+                    gifContainer.innerHTML = `<img src="catblowingup.gif" alt="Sad">`;
                 }
-                return;
-            }
-
-            if (currentQuestion < questions.length) {
-                document.getElementById('question').innerText = questions[currentQuestion];
-            } else {
-                document.getElementById('question').innerHTML = `
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-                        <img src="audreyorbeezgun.gif" alt="Happy">
-                        <div style="font-size: 2em; color: white;">Yayyyyy meoww!</div>
-                        <img src="catkissing.gif" alt="Happy">
-                    </div>`;
-                document.querySelector('.options').style.display = 'none';
             }
         }
-
-        const gifs = [
-            "audreyissocute.gif",  // Q1
-            "catdancing.gif",      // Q2
-            "cathugging.gif",      // Q3
-            "audreyorbeezgun.gif"  // Placeholder for final
-        ];
     </script>
 
 </body>
 </html>
+
 
