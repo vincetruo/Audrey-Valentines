@@ -96,9 +96,9 @@
         ];
 
         const gifs = [
-            "https://vincetruo.github.io/Audrey-Valentines/audreyissocute.gif",
-            "https://vincetruo.github.io/Audrey-Valentines/catdancing.gif",
-            "https://vincetruo.github.io/Audrey-Valentines/cathugging.gif"
+            "https://raw.githubusercontent.com/vincetruo/Audrey-Valentines/main/audreyissocute.gif",
+            "https://raw.githubusercontent.com/vincetruo/Audrey-Valentines/main/catdancing.gif",
+            "https://raw.githubusercontent.com/vincetruo/Audrey-Valentines/main/cathugging.gif"
         ];
 
         const noResponses = [
@@ -133,8 +133,8 @@
                     document.getElementById('question').innerText = questions[currentQuestion];
                     gifContainer.innerHTML = `
                         <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-                            <img src="https://vincetruo.github.io/Audrey-Valentines/audreyorbeezgun.gif" alt="Happy">
-                            <img src="https://vincetruo.github.io/Audrey-Valentines/catkissing.gif" alt="Happy">
+                            <img src="https://raw.githubusercontent.com/vincetruo/Audrey-Valentines/main/audreyorbeezgun.gif" alt="Happy">
+                            <img src="https://raw.githubusercontent.com/vincetruo/Audrey-Valentines/main/catkissing.gif" alt="Happy">
                         </div>`;
                     document.querySelector('.options').innerHTML = `<button class="btn" onclick="showHearts()">❤️ Heart ❤️</button>`;
                 }
@@ -142,10 +142,10 @@
             } else {
                 if (noIndex < noResponses.length) {
                     document.getElementById('question').innerText = noResponses[noIndex];
-                    gifContainer.innerHTML = `<img src="https://vincetruo.github.io/Audrey-Valentines/catblowingup.gif" alt="No Response">`;
+                    gifContainer.innerHTML = `<img src="https://raw.githubusercontent.com/vincetruo/Audrey-Valentines/main/catblowingup.gif" alt="No Response">`;
                     noIndex++;
                 } else {
-                    gifContainer.innerHTML = `<img src="https://vincetruo.github.io/Audrey-Valentines/catblowingup.gif" alt="Sad">`;
+                    gifContainer.innerHTML = `<img src="https://raw.githubusercontent.com/vincetruo/Audrey-Valentines/main/catblowingup.gif" alt="Sad">`;
                 }
             }
         }
@@ -165,4 +165,3 @@
 
 </body>
 </html>
-
