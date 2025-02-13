@@ -18,6 +18,8 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
+            position: relative;
         }
         .question {
             margin: 40px 0;
@@ -57,6 +59,18 @@
             max-width: 300px;
             border-radius: 20px;
         }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2em;
+            animation: floatUp 3s linear;
+            top: 80%;
+            left: 50%;
+        }
+        @keyframes floatUp {
+            0% {transform: translateY(0) translateX(0); opacity: 1;}
+            100% {transform: translateY(-600px) translateX(-50px); opacity: 0;}
+        }
     </style>
 </head>
 <body>
@@ -74,7 +88,6 @@
     <div id="gif-container"></div>
 
     <script>
-        // Questions in sequence
         const questions = [
             "Will you be my valentuzz?",
             "Will you be the ts to my pmo?",
@@ -82,15 +95,12 @@
             "Yayyyyy meoww!"
         ];
 
-        // GIFs corresponding to each question
         const gifs = [
-            "audreyissocute.gif",  // Q1
-            "catdancing.gif",      // Q2
-            "cathugging.gif",      // Q3
-            "audreyorbeezgun.gif"  // Placeholder for final
+            "audreyissocute.gif",
+            "catdancing.gif",
+            "cathugging.gif"
         ];
 
-        // Responses for "No" button
         const noResponses = [
             "No",
             "Are you sure?",
@@ -108,29 +118,28 @@
             document.getElementById('gif-container').innerHTML = `<img src="${gifs[currentQuestion]}" alt="Happy">`;
         };
 
-        // Function to handle button clicks
         function nextQuestion(response) {
             const gifContainer = document.getElementById('gif-container');
 
             if (response === 'yes') {
                 currentQuestion++;
                 noIndex = 0;
-                if (currentQuestion < questions.length) {
+
+                if (currentQuestion < 3) {
                     document.getElementById('question').innerText = questions[currentQuestion];
                     gifContainer.innerHTML = `<img src="${gifs[currentQuestion]}" alt="Happy">`;
-                } else {
-                    // Final slide with both GIFs on the sides
-                    document.getElementById('question').innerHTML = `
+                } else if (currentQuestion === 3) {
+                    // Final slide
+                    document.getElementById('question').innerText = questions[currentQuestion];
+                    gifContainer.innerHTML = `
                         <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
                             <img src="audreyorbeezgun.gif" alt="Happy">
-                            <div style="font-size: 2em; color: white;">Yayyyyy meoww!</div>
                             <img src="catkissing.gif" alt="Happy">
                         </div>`;
-                    document.querySelector('.options').style.display = 'none';
+                    document.querySelector('.options').innerHTML = `<button class="btn" onclick="showHearts()">❤️ Heart ❤️</button>`;
                 }
 
             } else {
-                // Handle "No" responses
                 if (noIndex < noResponses.length) {
                     document.getElementById('question').innerText = noResponses[noIndex];
                     gifContainer.innerHTML = `<img src="catblowingup.gif" alt="No Response">`;
@@ -140,9 +149,19 @@
                 }
             }
         }
+
+        function showHearts() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.textContent = '💖';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${2 + Math.random() * 3}s`;
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
     </script>
 
 </body>
 </html>
-
-
