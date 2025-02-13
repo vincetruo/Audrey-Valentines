@@ -47,6 +47,11 @@
         }
         #gif-container {
             margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         img {
             max-width: 300px;
@@ -104,7 +109,11 @@
             if (currentQuestion < questions.length) {
                 document.getElementById('question').innerText = questions[currentQuestion];
             } else {
-                document.getElementById('question').innerHTML = "Yayyyyy meoww!<br><img src='audreyorbeezgun.gif'><br><img src='catkissing.gif'>";
+                document.getElementById('question').innerHTML = "<div style='display: flex; align-items: center; justify-content: center; gap: 20px;'>
+                    <img src='audreyorbeezgun.gif' alt='Happy'>
+                    <span style='font-size: 2em;'>Yayyyyy meoww!</span>
+                    <img src='catkissing.gif' alt='Happy'>
+                </div>";
                 document.querySelector('.options').style.display = 'none';
             }
         }
