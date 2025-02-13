@@ -109,22 +109,26 @@
             if (currentQuestion < questions.length) {
                 document.getElementById('question').innerText = questions[currentQuestion];
             } else {
-                document.getElementById('question').innerHTML = `<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-                    <img src="audreyorbeezgun.gif" alt="Happy">
-                    <div style="font-size: 2em; color: white;">Yayyyyy meoww!</div>
-                    <img src="catkissing.gif" alt="Happy">
-                </div>`;
+                document.getElementById('question').innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                        <img src="audreyorbeezgun.gif" alt="Happy">
+                        <div style="font-size: 2em; color: white;">Yayyyyy meoww!</div>
+                        <img src="catkissing.gif" alt="Happy">
+                    </div>`;
                 document.querySelector('.options').style.display = 'none';
             }
         }
 
         const gifs = [
-            "audreyissocute.gif",
-            "catdancing.gif",
-            "cathugging.gif",
-            "audreyorbeezgun.gif"
+            "audreyissocute.gif",  // Q1
+            "catdancing.gif",      // Q2
+            "cathugging.gif",      // Q3
+            "audreyorbeezgun.gif"  // Final
         ];
     </script>
+
+</body>
+</html>
 
 </body>
 </html>
