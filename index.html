@@ -12,6 +12,12 @@
             padding: 50px;
             color: #fff;
             text-shadow: 2px 2px 4px #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .question {
             margin: 40px 0;
@@ -63,27 +69,52 @@
             "Will you be my valentuzz?",
             "Will you be the ts to my pmo?",
             "Will you be my Valentine?",
-            "Yayyyyy!"
+            "Yayyyyy meoww!"
+        ];
+
+        const noResponses = [
+            "No",
+            "Are you sure?",
+            "Pookie please",
+            "Don't do this to me :(",
+            "You're breaking my heart",
+            "I'm gonna cry..."
         ];
 
         let currentQuestion = 0;
+        let noIndex = 0;
 
         function nextQuestion(response) {
             const gifContainer = document.getElementById('gif-container');
             if (response === 'yes') {
-                gifContainer.innerHTML = '<img src="audreyorbeezgun.gif" alt="Happy">';
+                gifContainer.innerHTML = `<img src="${gifs[currentQuestion]}" alt="Happy">`;
                 currentQuestion++;
+                noIndex = 0;
             } else {
-                gifContainer.innerHTML = '<img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="Sad">';
+                if (noIndex < noResponses.length) {
+                    document.getElementById('question').innerText = noResponses[noIndex];
+                    gifContainer.innerHTML = '<img src="catblowingup.gif" alt="No Response">';
+                    noIndex++;
+                } else {
+                    gifContainer.innerHTML = '<img src="catblowingup.gif" alt="Sad">';
+                }
+                return;
             }
 
             if (currentQuestion < questions.length) {
                 document.getElementById('question').innerText = questions[currentQuestion];
             } else {
-                document.getElementById('question').innerText = "Woohoo! Happy Valentine's Day!";
+                document.getElementById('question').innerHTML = "Yayyyyy meoww!<br><img src='audreyorbeezgun.gif'><br><img src='catkissing.gif'>";
                 document.querySelector('.options').style.display = 'none';
             }
         }
+
+        const gifs = [
+            "audreyorbeezgun.gif",
+            "catdancing.gif",
+            "cathugging.gif",
+            "catkissing.gif"
+        ];
     </script>
 
 </body>
