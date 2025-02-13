@@ -96,9 +96,9 @@
         ];
 
         const gifs = [
-            "audreyissocute.gif",
-            "catdancing.gif",
-            "cathugging.gif"
+            "https://vincetruo.github.io/Audrey-Valentines/audreyissocute.gif",
+            "https://vincetruo.github.io/Audrey-Valentines/catdancing.gif",
+            "https://vincetruo.github.io/Audrey-Valentines/cathugging.gif"
         ];
 
         const noResponses = [
@@ -133,8 +133,8 @@
                     document.getElementById('question').innerText = questions[currentQuestion];
                     gifContainer.innerHTML = `
                         <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-                            <img src="audreyorbeezgun.gif" alt="Happy">
-                            <img src="catkissing.gif" alt="Happy">
+                            <img src="https://vincetruo.github.io/Audrey-Valentines/audreyorbeezgun.gif" alt="Happy">
+                            <img src="https://vincetruo.github.io/Audrey-Valentines/catkissing.gif" alt="Happy">
                         </div>`;
                     document.querySelector('.options').innerHTML = `<button class="btn" onclick="showHearts()">❤️ Heart ❤️</button>`;
                 }
@@ -142,10 +142,10 @@
             } else {
                 if (noIndex < noResponses.length) {
                     document.getElementById('question').innerText = noResponses[noIndex];
-                    gifContainer.innerHTML = `<img src="catblowingup.gif" alt="No Response">`;
+                    gifContainer.innerHTML = `<img src="https://vincetruo.github.io/Audrey-Valentines/catblowingup.gif" alt="No Response">`;
                     noIndex++;
                 } else {
-                    gifContainer.innerHTML = `<img src="catblowingup.gif" alt="Sad">`;
+                    gifContainer.innerHTML = `<img src="https://vincetruo.github.io/Audrey-Valentines/catblowingup.gif" alt="Sad">`;
                 }
             }
         }
@@ -166,6 +166,3 @@
 </body>
 </html>
 
-
-</body>
-</html>
